@@ -16,4 +16,4 @@ const sendMail = (message) => {
     });
 };
 
-export default sendMail;
+module.exports = sendMail;

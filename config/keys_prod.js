@@ -1,4 +1,6 @@
 module.exports = {
+    mongoUri: process.env.MONGO_URI,
     outboxAddress: process.env.OUTBOX_ADDRESS,
-    outboxToken: process.env.OUTBOX_TOKEN
+    outboxPass: process.env.OUTBOX_PASS,
+    receiverAddress: process.env.RECEIVER_ADDRESS
 }

@@ -20,4 +20,4 @@ const toCiders = (cells) => {
     }, []);
 };
 
-export default toCiders;
+module.exports = toCiders;
