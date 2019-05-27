@@ -2,6 +2,7 @@ const Crawler = require('crawler');
 const {comparators} = require('generate-comparators');
 const toCiders = require('./crawlerUtils');
 const {getDiffs, updateCiders} = require('./dbUtils');
+const formatMessage = require('./formatMessage');
 const sendMail = require('./sendMail');
 
 
@@ -11,16 +12,15 @@ const crawler = new Crawler({
     callback: (error, res, done) => {
         const cells = res.$('td').toArray();
         const ciders = toCiders(cells);
-        getDiffs(ciders).then(diffs => {
-            const {arrivals, departures} = diffs;
+        getDiffs(ciders).then(({arrivals, departures}) => {
             if(arrivals.length || departures.length) {
+                const {text, html} = formatMessage(arrivals, departures);
+                sendMail(text, html);
                 updateCiders(ciders);
             } else {
                 require('mongoose').connection.close();
             }
         });
-        // const message = ciders.reduce((str, cider) => `${str}${cider.name} [${cider.abv}]`\n, '');
-        // sendMail(message);
         done();
     }
 });
