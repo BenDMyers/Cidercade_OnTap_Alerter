@@ -10,7 +10,7 @@ const byName = comparators(({name}) => name.toLowerCase());
 
 const crawler = new Crawler({
     callback: (error, res, done) => {
-        const cells = res.$('td').toArray();
+        const cells = res.$('.menu li.drink:not(.jk)').toArray();
         const ciders = toCiders(cells);
         getDiffs(ciders).then(({arrivals, departures}) => {
             if(arrivals.length || departures.length) {
@@ -26,6 +26,6 @@ const crawler = new Crawler({
 });
 
 crawler.queue({
-    uri: 'https://www.cidercade.com/ciders',
+    uri: 'https://www.cidercade.com/ontap',
     userAgent: 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Mobile Safari/537.36'
 });
