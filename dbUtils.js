@@ -9,7 +9,7 @@ mongoose.Promise = Promise;
 
 
 // DB model
-const TapSchema = new Schema({ciders: [{name: String, abv: String}]});
+const TapSchema = new Schema({ciders: [{name: String, abv: String, desc: String}]});
 const Tap = mongoose.model('Tap', TapSchema);
 
 // Determines which ciders are new and which have been voted off the island

@@ -6,7 +6,7 @@ const toText = (arrivals, departures) => {
     if(arrivals.length) {
         text += '\n\nARRIVALS';
         text = arrivals.reduce((message, cider) => {
-            return `${message}\n* ${cider.name} [${cider.abv}]`;
+            return `${message}\n* ${cider.name} [${cider.desc} - ${cider.abv}]`;
         }, text);
     }
 
@@ -21,7 +21,7 @@ const toText = (arrivals, departures) => {
 };
 
 const toHtmlListItems = (list) => {
-    return list.reduce((items, entry) => `${items}\n<li><b>${entry.name}</b> - <i>${entry.abv}</i></li>`, '');
+    return list.reduce((items, entry) => `${items}\n<li><b>${entry.name}</b> - ${entry.desc} [<i>${entry.abv}</i>]</li>`, '');
 }
 
 const toHtml = (arrivals, departures) => {
