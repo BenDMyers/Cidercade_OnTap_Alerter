@@ -11,7 +11,7 @@
   "dependencies": {
     "crawler": "^1.2.1",
     "generate-comparators": "^1.0.1",
-    "mongoose": "^5.5.11",
+    "mongoose": "^5.7.5",
     "nodemailer": "^6.2.1"
   }
 }
